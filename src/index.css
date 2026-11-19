@@ -1,0 +1,185 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/dm-sans';
+@import '@fontsource/caveat/700.css';
+
+/* ---------- Design tokens ---------- */
+@theme {
+  --color-periwinkle: #9daad1;
+  --color-coral: #f58f9a;
+  --color-sage: #8eaf92;
+  --color-butter: #f4c984;
+  --color-olive: #c1bb7a;
+  --color-ink: #2a2b3d;
+  --color-ink-soft: #4a4c63;
+  --color-cream: #fff8ee;
+  --color-paper: #fffdf8;
+
+  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'DM Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-hand: 'Caveat', cursive;
+
+  --shadow-pop: 5px 5px 0 0 #2a2b3d;
+  --shadow-pop-sm: 3px 3px 0 0 #2a2b3d;
+}
+
+/* The visitor-selectable accent (set from the swatch picker). All five
+   palette colors pass contrast with the ink text color. */
+:root {
+  --accent: #f58f9a;
+}
+@theme inline {
+  --color-accent: var(--accent);
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+body {
+  margin: 0;
+  background-color: var(--color-cream);
+  background-image: radial-gradient(rgba(42, 43, 61, 0.09) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+::selection {
+  background: var(--color-butter);
+  color: var(--color-ink);
+}
+
+/* Visible keyboard focus everywhere: dark ring + light halo so it reads on
+   every pastel. */
+:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #fff;
+  border-radius: 0.5rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--color-ink);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  transition: top 0.15s;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------- Reusable pieces ----------
+   Kept in the components layer so Tailwind utilities (bg-*, text-*) can
+   override them. */
+@layer components {
+.card {
+  background: var(--color-paper);
+  border: 2px solid var(--color-ink);
+  border-radius: 1.75rem;
+  box-shadow: var(--shadow-pop);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 999px;
+  padding: 0.25rem 0.85rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--color-ink);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.9rem;
+  padding: 0.6rem 1.4rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 999px;
+  font-weight: 700;
+  color: var(--color-ink);
+  box-shadow: var(--shadow-pop-sm);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 0 var(--color-ink);
+}
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 0 var(--color-ink);
+}
+
+.highlight {
+  background-image: linear-gradient(transparent 58%, var(--accent) 58%, var(--accent) 92%, transparent 92%);
+  padding: 0 0.1em;
+  transition: background-image 0.3s;
+}
+
+/* Makes a card's main link cover the whole card while keeping a visible
+   keyboard focus ring around the card. */
+.stretched::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1.75rem;
+}
+.stretched:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+.stretched:focus-visible::after {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #fff;
+}
+
+.prose-lite p + p {
+  margin-top: 1rem;
+}
+}
+
+/* Keep long words/urls from forcing horizontal scroll on phones */
+main {
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "event-host.webp": {
+    "w": 800,
+    "h": 1302
+  },
+  "matcha.webp": {
+    "w": 1000,
+    "h": 1333
+  },
+  "specs-cutout.webp": {
+    "w": 778,
+    "h": 1473
+  },
+  "sjc-login.webp": {
+    "w": 1162,
+    "h": 584
+  },
+  "sjc-dashboard.webp": {
+    "w": 1166,
+    "h": 589
+  },
+  "sjc-records.webp": {
+    "w": 1166,
+    "h": 588
+  },
+  "sjc-reports.webp": {
+    "w": 1167,
+    "h": 590
+  },
+  "sjc-sessions.webp": {
+    "w": 1160,
+    "h": 587
+  },
+  "sjc-counselors.webp": {
+    "w": 1164,
+    "h": 589
+  },
+  "sjc-testing.webp": {
+    "w": 1161,
+    "h": 587
+  },
+  "mb-landing.webp": {
+    "w": 1342,
+    "h": 632
+  },
+  "mb-features.webp": {
+    "w": 1333,
+    "h": 630
+  },
+  "mb-about.webp": {
+    "w": 1336,
+    "h": 630
+  },
+  "mb-home.webp": {
+    "w": 1138,
+    "h": 530
+  },
+  "mb-history.webp": {
+    "w": 1145,
+    "h": 542
+  },
+  "mb-trends.webp": {
+    "w": 1168,
+    "h": 537
+  }
+}
